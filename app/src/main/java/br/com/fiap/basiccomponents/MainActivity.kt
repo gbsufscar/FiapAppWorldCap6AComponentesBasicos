@@ -7,6 +7,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -19,6 +23,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -51,6 +57,10 @@ fun BasicComponentsScreen() {
         mutableStateOf("") // Vazio, "", é o valor de inicialização do estado da variável,
     }
 
+    var quantidade = remember {
+        mutableStateOf("")
+    }
+
     // Componentes/Composables da tela
     Column (
         modifier = Modifier
@@ -77,12 +87,36 @@ fun BasicComponentsScreen() {
             color = Color.White,
             fontFamily = Righteous // Utilizando a fonte importada do Google Fonts.
         )
+        // Composable TextField para digitar um texto
         TextField(
             modifier = Modifier.fillMaxWidth(),
 
             value = textFieldValue.value, // Pega o valor da variável (que é um objeto)
-            onValueChange = {novoValor -> textFieldValue.value = novoValor}
-            // Função Lambda; Leia-se: A cada novo texto digitado (novoValor), atualiza o valor da variável (textFieldVAlue.value).
+            onValueChange = {novoValor -> textFieldValue.value = novoValor}, // Função Lambda; Leia-se: A cada novo texto digitado (novoValor), atualiza o valor da variável (textFieldVAlue.value).
+            keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words), // Disponibiliza um teclado maiúsculo para digitação.
+            label = {
+                Text(text = "Nome e sobrenome")
+            },
+            leadingIcon = { // Posiciona o ícone no início do TextField
+                Icon(
+                    imageVector = Icons.Default.Person, // Figurinha de pessoa
+                    contentDescription = "",
+                    tint = Color(237, 20, 91)
+                )
+            }
+        )
+
+        // Composable TextField para digitar uma quantidade via teclado numérico
+        TextField(
+            modifier = Modifier.fillMaxWidth(),
+
+            value = "${quantidade.value}",
+            onValueChange = {novoValor -> quantidade.value = novoValor},
+            placeholder = {
+                          Text(text = "Qual a quantidade desejada?") // Um objeto Composable dentro do placeholder (dica para o usuário).
+            },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number) // parâmetro que permite mudar o teclado exibido para o usuário.
+
         )
     }
 }
