@@ -78,6 +78,22 @@ fun BasicComponentsScreen() {
         mutableStateOf("")
     }
 
+    // Variáveis de estado dos Checkbox
+    var kotlin = remember {
+        mutableStateOf(true)
+    }
+
+    var java = remember {
+        mutableStateOf(false)
+    }
+
+    var cSharp = remember {
+        mutableStateOf(false)
+    }
+
+
+    // Variáveis de estado dos Checkbox
+
 
     // Componentes/Composables da tela
     Column (
@@ -180,20 +196,56 @@ fun BasicComponentsScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        // Checboxes
         Row (modifier = Modifier.height(32.dp)){
             Checkbox(
-                checked = false,
-                onCheckedChange = {},
+                checked = kotlin.value,
+                onCheckedChange = {isState -> kotlin.value = isState},
                 colors = CheckboxDefaults.colors(
                     checkedColor = Color.White,
                     uncheckedColor = Color(0xffed1456)
                 )
             )
             Text(
-                text = "Opção 1",
+                text = "Kotlin",
                 color = Color.White
             )
         }
+
+        Row (modifier = Modifier.height(32.dp)){
+            Checkbox(
+                checked = java.value,
+                onCheckedChange = {java.value = it},
+                colors = CheckboxDefaults.colors(
+                    checkedColor = Color.White,
+                    uncheckedColor = Color(0xffed1456)
+                )
+            )
+            Text(
+                text = "Java",
+                color = Color.White
+            )
+        }
+
+        Row (modifier = Modifier.height(32.dp)){
+            Checkbox(
+                checked = cSharp.value,
+                onCheckedChange = {cSharp.value = it},
+                colors = CheckboxDefaults.colors(
+                    checkedColor = Color.White,
+                    uncheckedColor = Color(0xffed1456)
+                )
+            )
+            Text(
+                text = "C#",
+                color = Color.White
+            )
+        }
+
+
+        // Radio Button
+
+
     }
 }
 
