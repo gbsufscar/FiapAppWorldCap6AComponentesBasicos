@@ -22,6 +22,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -92,7 +94,10 @@ fun BasicComponentsScreen() {
     }
 
 
-    // Variáveis de estado dos Checkbox
+    // Variáveis de estado dos Radio Buttons
+    var selecionado = remember {
+        mutableStateOf(-1) // Valor -1 para garantir que radio button venha préselecionado.
+    }
 
 
     // Componentes/Composables da tela
@@ -241,10 +246,48 @@ fun BasicComponentsScreen() {
                 color = Color.White
             )
         }
-
+        Spacer(modifier = Modifier.height(16.dp))
 
         // Radio Button
+        Row (modifier = Modifier.fillMaxWidth()){
+            Row (verticalAlignment = Alignment.CenterVertically){
+                RadioButton(
+                    selected = selecionado.value == 0,
+                    onClick = { selecionado.value = 0 },
+                    colors = RadioButtonDefaults.colors(
+                        selectedColor = Color.White,
+                        unselectedColor = Color(0xffed145b)
+                    )
+                )
+                Text(text = "MacOS", color = Color.White)
+            }
 
+            Row (verticalAlignment = Alignment.CenterVertically){
+                RadioButton(
+                    selected = selecionado.value == 1,
+                    onClick = { selecionado.value = 1 },
+                    colors = RadioButtonDefaults.colors(
+                        selectedColor = Color.White,
+                        unselectedColor = Color(0xffed145b)
+                    )
+                )
+                Text(text = "GNU/Linux", color = Color.White)
+            }
+
+            Row (verticalAlignment = Alignment.CenterVertically){
+                RadioButton(
+                    selected = selecionado.value == 2,
+                    onClick = { selecionado.value = 2 },
+                    colors = RadioButtonDefaults.colors(
+                        selectedColor = Color.White,
+                        unselectedColor = Color(0xffed145b)
+                    )
+                )
+                Text(text = "Windows 11", color = Color.White)
+            }
+
+        }
+        
 
     }
 }
