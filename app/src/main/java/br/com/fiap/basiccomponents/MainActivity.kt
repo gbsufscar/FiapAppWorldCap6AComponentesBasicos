@@ -1,9 +1,12 @@
 package br.com.fiap.basiccomponents
 
+import android.icu.text.ListFormatter.Width
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,15 +14,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.RadioButton
@@ -287,6 +294,31 @@ fun BasicComponentsScreen() {
             }
 
         }
+        Spacer(modifier = Modifier.height(32.dp))
+
+        // Botões
+        Row (
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ){
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.size(width = 150.dp, height = 60.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Magenta),
+                border = BorderStroke(width = 3.dp, color = Color.White)
+            ) {
+                Text(text = "Clique Aqui")
+            }
+
+            OutlinedButton(onClick = { /*TODO*/ },
+                modifier = Modifier.size(width = 150.dp, height = 60.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Magenta),
+                border = BorderStroke(width = 3.dp, color = Color.White)
+            ) {
+                Text(text = "Outro Botão")
+            }
+        }
+
+
         
 
     }
