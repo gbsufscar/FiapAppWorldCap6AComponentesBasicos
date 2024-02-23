@@ -301,7 +301,9 @@ fun BasicComponentsScreen() {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ){
-            Button(onClick = { /*TODO*/ },
+            Button(onClick = {
+                cidade.value = "Unidade Paulista"
+                             },
                 modifier = Modifier.size(width = 150.dp, height = 60.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Magenta),
                 border = BorderStroke(width = 3.dp, color = Color.White)
@@ -309,7 +311,9 @@ fun BasicComponentsScreen() {
                 Text(text = "Clique Aqui")
             }
 
-            OutlinedButton(onClick = { /*TODO*/ },
+            OutlinedButton(onClick = {
+                cidade.value = ""
+                                     },
                 modifier = Modifier.size(width = 150.dp, height = 60.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Magenta),
                 border = BorderStroke(width = 3.dp, color = Color.White)
